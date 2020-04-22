@@ -14,16 +14,16 @@ class ShoppingListComponent extends Component {
       itemAdded: [],
     };
 
-    // this.state = { isToggleOn: true };
-
-    // This binding is necessary to make `this` work in the callback
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(item) {
     count++;
     this.state.itemAdded.push(item);
+    var myObjectJson = JSON.stringify(this.state.itemAdded);
+    // this.state.itemAdded.push(item);
     localStorage.setItem("coun", this.state.itemAdded.length);
+    localStorage.setItem("itemToAdded", myObjectJson);
     // this.setState((state) => ({ coun: coun++ }));
   }
 
@@ -118,6 +118,7 @@ class ShoppingListComponent extends Component {
             <Card.Img
               variant="bottom"
               src={ingredient.image}
+              style={{ width: "10rem", height: "5rem" }}
               //src={process.env.PUBLIC_URL + "ipphone.jpg"}
             />
             <Card.Body key={index}>
